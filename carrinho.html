@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RPGExplorer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: lightblue;
+        min-height: 100vh;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin: 20px;
+        background-color: #001f3f;
+        color: #fff;
+        border-radius: 15px;
+        height: 80px;
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 100px;
+        margin: 30px auto;
+        background-color: azure;
+        height: 60px;
+        width: 20%;
+        border-radius: 30px;
+        font-size: 20px;
+      }
+
+      .lagoa {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 40%;
+        width: 50%;
+        border-radius: 10px;
+        background-color: black;
+      }
+      .home {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        padding: 3px 10px;
+        background-color: white;
+        height: 80%;
+        width: 5%;
+        cursor: pointer;
+        margin-right: 0;
+        margin-left: 1400px;
+        color: black;
+
+        
+      }
+
+      
+
+      .user{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        padding: 3px 10px;
+        background-color: white;
+        height: 60%;
+        width: 3%;
+        cursor: pointer;
+        color: black;
+      }
+     
+    </style>
+  </head>
+  <header class="header">
+    <h2>RPGExplorer</h2>
+
+    <div class="home" onclick="window.location.href='index.html'">Home</div>
+    
+    <div class="user" onclick="window.location.href='user.html'">User</div>
+   
+  </header>
+
+  <body>
+    <div class="info">Seu carrinho</div>
+    <div class="lagoa"></div>
+ 
+
+  </body>
+</html>

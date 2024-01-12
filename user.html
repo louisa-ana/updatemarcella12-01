@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página do usuário</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: lightblue;
+        min-height: 100vh;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin: 20px;
+        background-color: #001f3f;
+        color: #fff;
+        border-radius: 15px;
+        height: 80px;
+      }
+
+      form {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 30px;
+        padding: 20px;
+        background-color: aliceblue;
+        gap: 20px;
+      }
+
+      .row {
+        position: absolute;
+        right: 60%;
+        top: 25%;
+      }
+
+      label {
+        margin-bottom: 8px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        background-color: #4c7aaf;
+        color: white;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #4562a0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h2>Abaixo estão suas informações:</h2>
+    </header>
+
+  
+<form id="informationusers" action="/editaruser" method="post">
+  <label for="name">Nome:</label>
+  <input type="text" id="name" name="name" value="<%= user.Name %>" />
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" value="<%= user.Email %>" readonly />
+
+  <label for="password">Senha:</label>
+  <input type="password" id="password" name="password" value="<%= user.Password %>" />
+  
+  <button type="submit">Editar Informações</button>
+</form>
+
+  </body>
+</html>

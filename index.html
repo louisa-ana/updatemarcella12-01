@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RPGExplorer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: lightblue;
+        min-height: 100vh;
+      }
+
+      .product-card {
+        height: 300px;
+        width: calc(100% / 7 - 20px);
+        background-color: azure;
+        border-radius: 10px;
+        padding: 15px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+
+      .product-card img {
+        width: 100%;
+      }
+
+      .lagoa {
+        width: 95%;
+        max-width: 1330px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin: 20px;
+        background-color: #001f3f;
+        color: #fff;
+        border-radius: 15px;
+        height: 80px;
+      }
+
+      .cart-btn {
+        border-radius: 10px;
+        padding: 3px 10px;
+        background-color: white;
+        height: 80%;
+        width: 5%;
+        cursor: pointer;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0;
+        margin-left: 1400px;
+      }
+
+      .cartimg {
+        width: 60px;
+        height: 60px;
+      }
+
+      .product-image {
+        height: 120px;
+      }
+
+      .user {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        padding: 3px 10px;
+        background-color: white;
+        height: 60%;
+        width: 3%;
+        cursor: pointer;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <h2>RPGExplorer</h2>
+
+      <div class="cart-btn">Carrinho</div>
+      <div class="user" onclick="window.location.href='user.html'">User</div>
+    </header>
+
+    <nav class="autenticação">
+      <li onclick="window.location.replace('cadastro.html')">
+        Não possui conta? Cadastre-se
+      </li>
+    </nav>
+
+    <section class="lagoa" id="productsContainer">
+      <!-- Produtos serão exibidos aqui -->
+    </section>
+
+    <script>
+      $(document).ready(function () {
+        $(".cart-btn").click(function () {
+          window.location.href = "carrinho.html";
+        });
+
+        // Adicione o manipulador de eventos de clique para os botões "Adicionar ao Carrinho"
+        $("#productsContainer").on("click", ".add-to-cart-btn", function () {
+          const productID = $(this).data("product-id");
+
+          // Enviar uma solicitação AJAX para adicionar ao carrinho
+          $.post("/adicionar-ao-carrinho", { productID }, function (response) {
+            if (response.success) {
+              alert("Produto adicionado ao carrinho com sucesso!");
+            } else {
+              alert("Erro ao adicionar o produto ao carrinho.");
+            }
+          });
+        });
+
+        // Restante do seu código...
+      });
+
+      $.get("/produtos", function (data) {
+        data.forEach(function (product) {
+          const productCard = $(`
+            <div class="product-card" data-product-id="${product.ProductID}">
+              <img src="${product.ImageURL}" class="product-image"/>
+              <hr>      
+              <p>${product.Name}</p>
+              <p>Categoria: ${product.Category}</p>
+              <p>Valor: ${product.Price}</p>
+              <hr>
+              <button class="add-to-cart-btn" data-product-id="${product.ProductID}">Adicionar ao carrinho</button>
+            </div>
+          `);
+
+          $("#productsContainer").append(productCard);
+        });
+      });
+    </script>
+  </body>
+</html>
+// productCard.click(function () { // Redireciona para a página do produto //
+const productId = $(this).data("product-id"); //
+window.location.replace(`/produto.html?id=${productId}`); // });
